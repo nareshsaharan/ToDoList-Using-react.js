@@ -1,0 +1,26 @@
+.item
+{
+    border: 0; 
+    color:black;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 3px 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 5px 5px black;
+    word-wrap: break-word;
+    display: inline-flex;
+}
+.txt
+{
+    width: 280PX;
+    padding-right: 8px;
+    /* background-color: yellow; */
+}
+.icon{
+    cursor : pointer ; 
+    margin: auto ;
+    /* box-shadow: 3px 3px black; */
+}
