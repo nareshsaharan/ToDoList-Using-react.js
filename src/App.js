@@ -30,6 +30,7 @@ class App extends Component{
           }
         })
       }
+      this.nameInput.focus();
   }
 
  handleInput = (e) =>
@@ -41,11 +42,21 @@ class App extends Component{
         }
       })  
  }
+ 
+ componentDidMount(){
+  this.nameInput.focus();
+}
 
+_handleKeyDown = (e) => {
+  if (e.key === 'Enter') {
+    this.addTask();
+  }
+}
 
 render(){
   let items = null;
 
+  
 
   items = (
     this.state.items.map((e)=>{
@@ -61,7 +72,8 @@ render(){
     <div className="app">
       <h1><FaCheckSquare/> Hello TODO </h1>
       <div className="main-div">
-          <input className="in" type="text" placeholder="Enter Text" onChange={this.handleInput} value={this.state.currItem.text} onFocus={e=>e.currentTarget.select()} ></input>
+          <input ref={(input) => { this.nameInput = input; }} className="in" type="text" placeholder="Enter Text" 
+          onChange={this.handleInput} value={this.state.currItem.text} onKeyDown={this._handleKeyDown}></input>
           <button className="in-btn" onClick={this.addTask} >ADD</button>
           <div className="items-div">
           {items}
