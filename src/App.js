@@ -10,26 +10,29 @@ class App extends Component{
     items : [],
     currItem :{
       text:"",
-      key:""
+      id:"",
+      done:false
     }
   }
 
  addTask = ()=>
   {
 
-      const newItem = this.state.currItem.text.trim();     
-      if(newItem.length>0)
+      const newItem = this.state.currItem;     
+      if(newItem.text.trim().length>0)
       {
         const item = [newItem,...this.state.items]
-
+        
         this.setState({
           items : item,
           currItem :{
             text:"",
-            key:""
+            id:"",
+            done:false
           }
         })
       }
+      
       this.nameInput.focus();
   }
 
@@ -38,7 +41,8 @@ class App extends Component{
       this.setState({
         currItem :{
           text:e.target.value,
-          key:Date.now()
+          id:Date.now(),
+          done:false
         }
       })  
  }
@@ -53,6 +57,22 @@ _handleKeyDown = (e) => {
   }
 }
 
+finish = (id,done) =>{
+  const item = [...this.state.items]
+  for(let i=0;i<item.length;i++)
+  {
+    if(item[i].key === id)
+    {
+        const curr = item.splice(i,1);
+        curr.done = true;
+        item.
+        break;
+
+    }
+  }
+}
+
+
 render(){
   let items = null;
 
@@ -61,7 +81,9 @@ render(){
   items = (
     this.state.items.map((e)=>{
       return(
-        <Items text={e}/>
+        <Items text={e.text} id={e.id} 
+        completeTask = {this.finish(e.id,e.done)}/>
+
       )
     })
   )
@@ -83,9 +105,7 @@ render(){
      
     </div>
   );
-
 }
-
 }
 
 export default App;

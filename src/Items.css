@@ -24,3 +24,7 @@
     margin: auto ;
     /* box-shadow: 3px 3px black; */
 }
+.comp{
+    text-decoration: line-through;
+    color: blue;
+}
