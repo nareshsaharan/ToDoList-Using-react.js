@@ -18,11 +18,10 @@ class App extends Component{
  addTask = ()=>
   {
 
-      const newItem = this.state.currItem;     
+      let newItem = this.state.currItem;     
       if(newItem.text.trim().length>0)
       {
-        const item = [newItem,...this.state.items]
-        
+        let item = [newItem,...this.state.items]
         this.setState({
           items : item,
           currItem :{
@@ -57,19 +56,22 @@ _handleKeyDown = (e) => {
   }
 }
 
-finish = (id,done) =>{
-  const item = [...this.state.items]
+finish = (id) =>{
+  let item = [...this.state.items]
   for(let i=0;i<item.length;i++)
   {
-    if(item[i].key === id)
+    if(item[i].id === id)
     {
-        const curr = item.splice(i,1);
-        curr.done = true;
-        item.
+        item[i].done = true;
+        let curr = item.splice(i,1);
+        item.push(curr[0])
         break;
-
     }
   }
+// console.log(item);
+  this.setState({
+    items : item
+  })
 }
 
 
@@ -80,9 +82,10 @@ render(){
 
   items = (
     this.state.items.map((e)=>{
+     // console.log(e)
       return(
-        <Items text={e.text} id={e.id} 
-        completeTask = {this.finish(e.id,e.done)}/>
+        <Items text={e.text} id={e.id} done={e.done}
+        completeTask = {()=>this.finish(e.id)}/>
 
       )
     })

@@ -5,12 +5,13 @@ import {FaCheckCircle} from 'react-icons/fa'
 
 
 const Items = (props) =>{
-    if(props.done)
+    //console.log(props)
+    if(props.done === true)
     {
         return (
             <div className="item">
-                <div className="txt" > {props.text} </div>
-               <div className="icon comp" onClick={props.completeTask}> <FaCheckCircle/> </div>
+                <div className="txt comp" > {props.text} </div>
+               <div className="icon col" > <FaCheckCircle/></div>
             </div>  
         )
     }

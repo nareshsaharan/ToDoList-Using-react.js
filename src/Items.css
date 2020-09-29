@@ -26,5 +26,9 @@
 }
 .comp{
     text-decoration: line-through;
+/* /color: blue; */
+}
+.col
+{
     color: blue;
 }
